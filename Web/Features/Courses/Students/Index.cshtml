@@ -1,0 +1,87 @@
+﻿
+@model ContosoUniversity.Modules.Courses.Application.Students.GetStudentsByPage.PagedStudentsDto
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@Model.NameSortParm" asp-route-currentFilter="@Model.CurrentFilter">Last Name</a>
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>             
+               <a asp-action="Index" asp-route-sortOrder="@Model.DateSortParm" asp-route-currentFilter="@Model.CurrentFilter">Enrollment Date</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Students != null)
+        {
+            foreach (var item in Model.Students)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+    <a asp-action="Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageNumber="@Model.PreviousPage"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       asp-route-searchstring ="@Model.SearchString"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageNumber="@Model.NextPage"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       asp-route-searchstring ="@Model.SearchString"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+    

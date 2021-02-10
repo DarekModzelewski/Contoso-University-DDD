@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SharedKernel\Application\ContosoUniversity.SharedKernel.Application.csproj" />
+    <ProjectReference Include="..\..\..\SharedKernel\Domain\ContosoUniversity.SharedKernel.Domain.csproj" />
+    <ProjectReference Include="..\Domain\ContosoUniversity.Modules.Courses.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

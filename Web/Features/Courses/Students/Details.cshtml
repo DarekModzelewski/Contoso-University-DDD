@@ -1,0 +1,68 @@
+﻿@model ContosoUniversity.Modules.Courses.Application.Students.GetStudentDetails.StudentDto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label asp-for="LastName"></label>
+        </dt>
+        <dd>
+            @Model.LastName
+        </dd>
+        <dt>
+            <label asp-for="@Model.FirstName"></label>
+        </dt>
+        <dd>
+            @Model.FirstName
+        </dd>
+        <dt>
+            <label asp-for="EnrollmentDate"></label>
+        </dt>
+        <dd>
+            @Model.EnrollmentDate
+        </dd>
+
+        @if (Model.Enrollments != null && Model.Enrollments.Count() > 0)
+         {
+            <dt>
+                <label asp-for="Enrollments"></label>
+            </dt>
+            <dd>
+                <table class="table">
+                    <tr>
+                        <th>Course Title</th>
+                        <th>Grade</th>
+                    </tr>
+                    @foreach (var enrollment in Model.Enrollments)
+                     {
+                        <tr>
+                            <td>
+                                @enrollment.Title
+                            </td>
+                            <td>
+                                @enrollment.Grade
+                            </td>
+                        </tr>
+                     }
+                </table>
+
+            </dd>
+         }
+
+
+
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
