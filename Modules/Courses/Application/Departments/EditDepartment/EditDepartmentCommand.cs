@@ -12,8 +12,9 @@ namespace ContosoUniversity.Modules.Courses.Application.Departments.EditDepartme
         public string Currency { get; }
         public DateTime StartDate { get; }
 
-        public EditDepartmentCommand(string name, decimal budget, string currency, DateTime startDate)
+        public EditDepartmentCommand(Guid departmentId,string name, decimal budget, string currency, DateTime startDate)
         {
+            DepartmentId = departmentId;
             Name = name;
             Budget = budget;
             Currency = currency;

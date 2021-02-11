@@ -3,11 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Features\Courses\Students\Index.cs" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
@@ -25,9 +21,6 @@
   <ItemGroup>
     <Folder Include="logs\" />
   </ItemGroup>
-
- 
-
   <ItemGroup>
     <ProjectReference Include="..\Modules\Courses\Application\ContosoUniversity.Modules.Courses.Application.csproj" />
     <ProjectReference Include="..\Modules\Courses\Infrastructure\ContosoUniversity.Modules.Courses.Infrastructure.csproj" />

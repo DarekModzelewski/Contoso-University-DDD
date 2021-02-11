@@ -1,4 +1,4 @@
-﻿@model ContosoUniversity.Modules.Courses.Application.Students.GetStudentDetails.StudentDto
+﻿@model ContosoUniversity.Modules.Courses.Application.Departments.GetDepartmentDetails.DepartmentDto
 
 @{
     ViewBag.Title = "Delete";
@@ -12,32 +12,32 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            <label asp-for="LastName"></label>
+            <label asp-for="Name"></label>
         </dt>
 
         <dd>
-            @Model.LastName
+            @Model.Name
         </dd>
 
         <dt>
-            <label asp-for="@Model.FirstName"></label>
+            <label asp-for="@Model.Budget"></label>
         </dt>
 
         <dd>
-            @Model.FirstName
+            @Model.Budget @Model.Currency
         </dd>
 
         <dt>
-            <label asp-for="EnrollmentDate"></label>
+            <label asp-for="StartDate"></label>
         </dt>
 
         <dd>
-            @Model.EnrollmentDate
+            @Model.StartDate
         </dd>
 
     </dl>
 
-    <form asp-action="Delete">       
+    <form asp-action="Delete">
         <div class="form-group">
             <input type="submit" value="Delete" class="btn btn-primary" />
             <a asp-action="Index">Back to List</a>

@@ -34,14 +34,11 @@ namespace ContosoUniversity.Web.Features.Courses.Students
 
 
         [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LastName, FirstName, EnrollmentDate")] CreateStudentRequest request)
+        public async Task<IActionResult> Create([Bind("LastName", "FirstName", "EnrollmentDate")] CreateStudentRequest request)
         {
              if (!ModelState.IsValid) return View(request);
 
@@ -53,14 +50,11 @@ namespace ContosoUniversity.Web.Features.Courses.Students
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public async Task<IActionResult> Edit(Guid id)
-        {
-            var model = await _coursesModule.ExecuteQueryAsync(new GetStudentDetailsQuery(id));
-            return View(model);
-        }
+        public async Task<IActionResult> Edit(Guid id) => View(await _coursesModule.ExecuteQueryAsync(new GetStudentDetailsQuery(id)));
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("Id","LastName", "FirstName", "EnrollmentDate")] EditStudentRequest request)
+        public async Task<IActionResult> Edit([Bind("Id","LastName", "FirstName","EnrollmentDate")] EditStudentRequest request)
         {
             if (!ModelState.IsValid) return View(request);
 
@@ -73,17 +67,11 @@ namespace ContosoUniversity.Web.Features.Courses.Students
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public async Task<IActionResult> Details(Guid id)
-        {
-            var model = await _coursesModule.ExecuteQueryAsync(new GetStudentDetailsQuery(id));
-            return View(model);
-        }
+        public async Task<IActionResult> Details(Guid id) => View(await _coursesModule.ExecuteQueryAsync(new GetStudentDetailsQuery(id)));
+
         [HttpGet]
-        public async Task<IActionResult> Delete(Guid id)
-        {
-            var model = await _coursesModule.ExecuteQueryAsync(new GetStudentDetailsQuery(id));
-            return View(model);
-        }
+        public async Task<IActionResult> Delete(Guid id) => View(await _coursesModule.ExecuteQueryAsync(new GetStudentDetailsQuery(id)));
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(DeleteStudentRequest request)

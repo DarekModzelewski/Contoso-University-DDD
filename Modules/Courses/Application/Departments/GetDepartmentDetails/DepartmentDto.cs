@@ -11,7 +11,6 @@ namespace ContosoUniversity.Modules.Courses.Application.Departments.GetDepartmen
         public string Administrator { get; set; }
         public string Name { get; set; }
         public string  Currency { get; set; }
-        [DataType(DataType.Currency)]
         public decimal Budget { get; set; }
         [DataType(DataType.Date)]
         [DisplayName("Start Date")]
