@@ -62,6 +62,14 @@ namespace ContosoUniversity.Modules.Courses.Domain.Departments
         internal void SoftDelete()
         {
             _isDeleted = true;
+            foreach (var enrollment in _studentEnrollments)
+            {
+                enrollment.SoftDelete();
+            }
+            foreach (var assignment in _instructorAssignments)
+            {
+                assignment.SoftDelete();
+            }
         }
 
     }

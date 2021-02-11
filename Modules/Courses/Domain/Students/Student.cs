@@ -60,20 +60,14 @@ namespace ContosoUniversity.Modules.Courses.Domain.Students
         }
         public void EnrollToCourse(CourseId courseId)
         {
-            //TBD validate
-            if (!_enrollments.Any(p => p.CourseId == courseId))
-            {
-                _enrollments.Add(Enrollment.CreateNew(Id, courseId));
-            }                    
+            CheckRule(new CannotEnrollStudentTwiceToTheSameCourseRule(Id, courseId, _enrollments));          
+            _enrollments.Add(Enrollment.CreateNew(Id, courseId));
         }
         public void AddGrade(CourseId courseId,Grade grade)
         {
-            //TBD validate
-            var enrollment = _enrollments.SingleOrDefault(e => e.CourseId == courseId);
-            if (enrollment != null)
-            {
-                enrollment.AddGrade(grade);
-            }
+            CheckRule(new CannotAddGradeToUnenrolledStudentRule(Id, courseId, _enrollments));
+            CheckRule(new CannotChangeGradeRule(Id, courseId, _enrollments));
+            _enrollments.SingleOrDefault(e => e.CourseId == courseId && e.StudentId == Id).AddGrade(grade);
         }
         public void SoftDelete()
         {
