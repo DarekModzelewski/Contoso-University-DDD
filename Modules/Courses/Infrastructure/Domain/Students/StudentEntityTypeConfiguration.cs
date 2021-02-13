@@ -22,7 +22,7 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure.Domain.Students
                 pn.Property(x => x.Last).HasColumnName("LastName");
             });
             builder.HasMany(i => i.Enrollments).WithOne(e => e.Student);               
-            builder.ToTable("Students", "university");
+            builder.ToTable("Students", "courses");
 
         }
     }

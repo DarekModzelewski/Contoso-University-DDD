@@ -26,7 +26,7 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure.Domain.Departments
                 b.Property(x => x.Value).HasColumnName("Value");
             });
             builder.HasMany(d => d.Courses).WithOne(c => c.Department);                                
-            builder.ToTable("Departments", "university");
+            builder.ToTable("Departments", "courses");
 
         }
     }

@@ -27,7 +27,7 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure.Domain.Instructors
                 ol.Property(x => x.PostalCode).HasColumnName("PostalCode");
             });
             builder.HasMany(i => i.Assignments).WithOne(a => a.Instructor);     
-            builder.ToTable("Instructors", "university");
+            builder.ToTable("Instructors", "courses");
 
         }
     }    

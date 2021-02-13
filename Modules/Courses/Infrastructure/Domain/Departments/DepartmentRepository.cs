@@ -22,11 +22,11 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure.Domain.Departments
         }       
         public async Task<Department> FindAsync(ISpecification<Department> specification)
         {
-            return await _coursesContext.Departments.ExeSpec(specification).FirstOrDefaultAsync();
+            return await _coursesContext.Departments.Include(d => d.Courses).ExeSpec(specification).FirstOrDefaultAsync();
         }
         public async Task<Department> GetByIdAsync(DepartmentId departmentId)
         {
-            return await _coursesContext.Departments.FirstOrDefaultAsync(x => x.Id == departmentId);
+            return await _coursesContext.Departments.Include(d => d.Courses).FirstOrDefaultAsync(x => x.Id == departmentId);
         }
         public async Task<IPagedList<Department>> GetAsync(int? pageNumber = null, int? pageSize = null)
         {

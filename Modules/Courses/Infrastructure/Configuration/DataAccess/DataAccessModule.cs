@@ -18,10 +18,10 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure.Configuration.DataAcc
             _loggerFactory = loggerFactory;
         }
         protected override void Load(ContainerBuilder builder) 
-        {            
+        {        
             builder.Register(c =>
             {
-               return new CoursesContextFactory(_databaseConnectionString, _loggerFactory);
+                return new CoursesContextFactory();
             }).AsSelf()
               .InstancePerLifetimeScope();
 

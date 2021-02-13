@@ -2,7 +2,7 @@
 using ContosoUniversity.Modules.Courses.Domain.Instructors.Services;
 using ContosoUniversity.Modules.Courses.Domain.Instructors.Specifications;
 
-namespace ContosoUniversity.Modules.Courses.Application.DomainServices
+namespace ContosoUniversity.Modules.Courses.Application.Instructors.DomainServices
 {
     public class InstructorUniquenessChecker : IInstructorUniquenessChecker
     {

@@ -16,10 +16,12 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure
         public DbSet<Assignment> CourseAssignments { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
-        public DbSet<Department> Departments { get; set; }      
-     
-        public CoursesContext(DbContextOptions options, ILoggerFactory loggerFactory)
-            : base(options)
+        public DbSet<Department> Departments { get; set; }
+
+        public CoursesContext(DbContextOptions options): base(options)
+        {
+        }
+        public CoursesContext(DbContextOptions options, ILoggerFactory loggerFactory): base(options)
         {
             _loggerFactory = loggerFactory;
         }

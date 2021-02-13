@@ -30,7 +30,11 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure.Domain.Students
         }
         public async Task<Student> FindAsync(ISpecification<Student> specification)
         {
-            return await _coursesContext.Students.ExeSpec(specification).FirstOrDefaultAsync();
+            return await _coursesContext.Students
+                .Include(s => s.Enrollments)
+                .ThenInclude(e => e.Course)
+                .ExeSpec(specification)
+                .FirstOrDefaultAsync();
         }
         public async Task<Student> GetByIdAsync(StudentId studentId)
         {
@@ -43,16 +47,12 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure.Domain.Students
         {
             return await _coursesContext.Students
                 .AsNoTracking()
-                .Include(s => s.Enrollments)
-                .ThenInclude(e => e.Course)
                 .ToPagedListAsync(pageNumber?? 1, pageSize ?? int.MaxValue);
         }
         public async Task<IPagedList<Student>> GetAsync(ISpecification<Student> specification, int? pageNumber = null, int? pageSize = null)
         {
             return await _coursesContext.Students
                 .AsNoTracking()
-                .Include(s => s.Enrollments)
-                .ThenInclude(e => e.Course)
                 .ExeSpec(specification)
                 .ToPagedListAsync(pageNumber ?? 1,pageSize ?? int.MaxValue);                                   
         }

@@ -20,7 +20,7 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure.Domain.Departments
             builder.HasMany(c => c.StudentEnrollments).WithOne(e => e.Course);
             builder.Property("_isDeleted").HasColumnName("IsDeleted"); ;
             builder.HasQueryFilter(s => EF.Property<bool>(s, "_isDeleted") == false);
-            builder.ToTable("Courses", "university");
+            builder.ToTable("DepartmentCourses", "courses");
 
         }
     }
