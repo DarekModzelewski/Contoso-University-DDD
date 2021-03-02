@@ -20,10 +20,6 @@ namespace ContosoUniversity.Modules.Courses.Infrastructure.Domain.Students
         {
             await _coursesContext.Students.AddAsync(student);
         }
-        public void Delete(Student student)
-        {
-            _coursesContext.Students.Remove(student);
-        }
         public Student Find(ISpecification<Student> specification)
         {
             return _coursesContext.Students.ExeSpec(specification).FirstOrDefault();

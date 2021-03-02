@@ -36,7 +36,7 @@ namespace ContosoUniversity.Modules.Courses.Application.Students.GetStudentsByPa
                 CurrentSort = query.SortOrder,
                 CurrentFilter = query.CurrentFilter,
                 SearchString = query.SearchString,
-                Students = _mapper.Map<List<StudentDto>>(result),
+                Students = _mapper.Map<IEnumerable<StudentDto>>(result),
                 DateSortParm = query.SortOrder == "Date" ? "date_desc" : "Date",
                 NameSortParm = String.IsNullOrEmpty(query.SortOrder) ? "name_desc" : "",
                 PreviousPage = result.PreviousPageNumber,

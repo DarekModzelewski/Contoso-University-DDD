@@ -16,7 +16,7 @@ namespace ContosoUniversity.Modules.Courses.Application.Students.GetStudentsByPa
         public bool HasNextPage { get; set; }
         public bool HasPreviousPage { get; set; }
         public int TotalItems { get; set; }
-        public List<StudentDto> Students { get; set; }
+        public IEnumerable<StudentDto> Students { get; set; }
        
              
     }
